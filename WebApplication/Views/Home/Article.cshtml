@@ -1,0 +1,37 @@
+﻿@model WebApplication.Models.ArticleModel
+
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                Titolo : @Model.Article.Title
+            </div>
+            <div class="col-md-6">
+                @Model.AuthorLabel : @Model.Article.Author
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                Date : @Model.Article.Date.ToShortDateString()
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    @Html.Raw(Model.Article.Text)
+                </p>
+
+            </div>
+        </div>
+
+
+
+

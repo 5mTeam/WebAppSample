@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="~/Content/Images/finix.png" class="img-fluid" />
+                    @*<img src="~/Content/Images/Letter-J-PNG-Stock-Photo.png" class="img-fluid" />*@
+                    @*<img src="~/Content/Images/download.jpg" class="img-fluid" />*@
+                </div>
+                <div class="col-md-9">
+                    <h1>@Model.Title</h1>
+                    <p>@Html.Raw(Model.Text)</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <!--Navbar-->
+                <nav class="navbar navbar-expand-lg primary-color">
+
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="#">Navbar</a>
+
+                    <!-- Collapse button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                        <!-- Links -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">
+                                    Home
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+
+                            <!-- Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <!-- Links -->
+
+                        <form class="form-inline">
+                            <div class="md-form my-0">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Collapsible content -->
+
+                </nav>
+                <!--/.Navbar-->
+            </div>
+        </div>
+
+        @RenderBody()
+
+        <div class="jumbotron text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Questo è il footer</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

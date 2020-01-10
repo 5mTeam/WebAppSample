@@ -1,0 +1,97 @@
+﻿@model WebApplication.Models.IndexModel
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+
+        @*@for (int i = 0; i < Model.Number; i++)
+        {
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Content/Images/Letter-J-PNG-Stock-Photo.png" class="img-fluid" />
+
+                        </div>
+                        <div class="col-md-8">
+                            <h3>Articolo @(i+1)</h3>
+                            <p>Lorem ipsum dolor..</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Content/Images/download.jpg" class="img-fluid" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>Evento @(i+1)</h3>
+                            <p>Lorem ipsum dolor..</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }*@
+
+
+        @foreach (var item in Model.Articles)
+        {
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Content/Images/Letter-J-PNG-Stock-Photo.png" class="img-fluid" />
+
+                        </div>
+                        <div class="col-md-8">
+                            <h3><a href="/home/article/@item.Id">@(item.Title)</a></h3>
+                            <p>@(item.Author)  @(item.Date)</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>@Html.Raw(item.Text)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Content/Images/download.jpg" class="img-fluid" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>Evento @(item.Id) (id articolo)</h3>
+                            <p>Lorem ipsum dolor..</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        @*<div class="row">
+            <div class="col-sm-6">
+                <h3>Articolo 2</h3>
+                <p>Lorem ipsum dolor..</p>
+            </div>
+            <div class="col-sm-6">
+                <h3>Evento 2</h3>
+                <p>Lorem ipsum dolor..</p>
+            </div>
+        </div>*@
