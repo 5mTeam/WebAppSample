@@ -36,6 +36,9 @@ namespace WebApplication.Helpers
             return article;
         }
 
-
+        public static bool Login(string username, string password)
+        {
+            return (username == "salvo" && password == "password");
+        }
     }
 }

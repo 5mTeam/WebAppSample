@@ -128,6 +128,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Entities\Article.cs" />
     <Compile Include="Models\Entities\BaseEntity.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Shared\_BaseLayoutPage.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

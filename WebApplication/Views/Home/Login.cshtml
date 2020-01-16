@@ -1,0 +1,51 @@
+﻿@model WebApplication.Models.LoginModel
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            @Model.LabelLogin
+        </h1>
+    </div>
+</div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <div class="form-group">
+                        <label for="Username">@Model.LabelUsername</label>
+                        @Html.TextBoxFor(t => t.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelUsername })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <div class="form-group">
+                        <label for="Username">@Model.LabelPassword</label>
+                        @Html.TextBoxFor(t => t.Password, new { @class = "form-control fadeIn third", placeholder = Model.LabelPassword })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <input type="submit" value="@Model.LabelButtonSend" class="btn btn-primary" />
+                </div>
+            </div>
+            if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+            {
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
+                       <p style="color:red">@Html.Raw(Model.ErrorMessage) </p>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>

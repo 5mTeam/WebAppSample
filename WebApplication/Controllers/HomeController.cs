@@ -20,7 +20,7 @@ namespace WebApplication.Controllers
                 Number = CustomRandomHelper.RandomNumber(3, 7)
             };
             model.Articles = DatabaseHelper.GetAllArticles();
-
+            ViewBag.Pippo = "gfhfhgj";
             return View(model);
         }
 
@@ -35,5 +35,35 @@ namespace WebApplication.Controllers
             model.Article = DatabaseHelper.GetArticleByid(id);
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            var model = new LoginModel();
+            LoadLabelLoginModel(model);
+            return View(model);
+        }
+
+        private static void LoadLabelLoginModel(LoginModel model)
+        {
+            model.LabelButtonSend = "Send";
+            model.LabelLogin = "Login";
+            model.LabelPassword = "Password";
+            model.LabelUsername = "Username";
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            LoadLabelLoginModel(model);
+            if (DatabaseHelper.Login(model.Username,model.Password))
+            {
+                //andremo verso l'area riservata
+            }
+            model.ErrorMessage = "Wrong login!";
+
+            return View(model);
+        }
+
     }
 }
