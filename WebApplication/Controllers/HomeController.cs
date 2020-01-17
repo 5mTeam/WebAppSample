@@ -58,7 +58,10 @@ namespace WebApplication.Controllers
             LoadLabelLoginModel(model);
             if (DatabaseHelper.Login(model.Username,model.Password))
             {
+                //carichiamo l'utente loggato in sessione
+                Session["loggedUser"] = 1;
                 //andremo verso l'area riservata
+                return RedirectToAction("Profile", "Reserved", new { id = 1 });
             }
             model.ErrorMessage = "Wrong login!";
 
