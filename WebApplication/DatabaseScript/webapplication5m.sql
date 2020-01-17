@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 17, 2020 alle 11:58
+-- Creato il: Gen 17, 2020 alle 12:04
 -- Versione del server: 10.1.36-MariaDB
 -- Versione PHP: 7.2.10
 
@@ -48,6 +48,27 @@ INSERT INTO `article` (`Id`, `Title`, `ImageUrl`, `Author`, `Text`, `Date`, `Ins
 (2, 'tilizzo del Lorem Ipsum', NULL, 'Aldus PageMaker', 'ofessore di latino al Hampden-Sydney College in Virginia, ha ricercato una delle più oscure parole latine, consectetur, da un passaggio del Lorem Ipsum e ha scoperto tra i vari testi in cui è citata, la fonte da cui è tratto il testo, le sezioni 1.10.32 and 1.10.33 del \"de Finibus Bonorum et Malorum\" di Cicerone. Questo testo è un trattato', '2019-12-02 00:00:00', '2019-12-09 10:12:17', NULL),
 (3, 'Scrivici una email ', NULL, 'Pinco Pallo', 're veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi', '2019-12-03 00:00:00', '2019-12-09 10:14:28', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `user`
+--
+
+CREATE TABLE `user` (
+  `Id` int(11) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `user`
+--
+
+INSERT INTO `user` (`Id`, `Username`, `Password`, `Name`) VALUES
+(1, 'admin', 'admin', 'Administrator'),
+(2, 'user', 'user', 'Normal user');
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -59,6 +80,12 @@ ALTER TABLE `article`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indici per le tabelle `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -67,6 +94,12 @@ ALTER TABLE `article`
 --
 ALTER TABLE `article`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT per la tabella `user`
+--
+ALTER TABLE `user`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

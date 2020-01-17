@@ -36,9 +36,16 @@ namespace WebApplication.Helpers
             return article;
         }
 
-        public static bool Login(string username, string password)
+        public static User Login(string username, string password)
         {
-            return (username == "salvo" && password == "password");
+            var user = new User();
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = "select * from user where username = @username and password = @password";
+                user = connection.Query<User>(sql, new { username, password }).FirstOrDefault();
+            }
+
+            return user;
         }
     }
 }

@@ -26,7 +26,7 @@
                     <p>@Html.Raw(Model.Text)</p>
                 </div>
                 <div class="col-md-3">
-              
+
                 </div>
             </div>
         </div>
@@ -55,12 +55,21 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/home/login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
+                            @if (Session["loggedUser"] == null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/home/login">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/reserved/profile/@( ((WebApplication.Models.Entities.User) Session["loggedUser"]).Id)">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/reserved/logout">Logout</a>
+                                </li>
+                            }
 
                             <!-- Dropdown -->
                             <li class="nav-item dropdown">

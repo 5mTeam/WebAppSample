@@ -130,6 +130,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Entities\Article.cs" />
     <Compile Include="Models\Entities\BaseEntity.cs" />
+    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\ProfileModel.cs" />
