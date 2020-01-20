@@ -1,0 +1,71 @@
+﻿@model WebApplication.Models.SignUpModel
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            @Model.LabelSignUp
+        </h1>
+    </div>
+</div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        @using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4">
+                    <div class="form-group">
+                        <label for="Username">@Model.LabelUsername</label>
+                        @Html.TextBoxFor(t => t.User.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelUsername })
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-4">
+                    <div class="form-group">
+                        <label for="Username">@Model.LabelEmail</label>
+                        @Html.TextBoxFor(t => t.User.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelEmail })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4">
+                    <div class="form-group">
+                        <label for="Name">@Model.LabelName</label>
+                        @Html.TextBoxFor(t => t.User.Name, new { @class = "form-control fadeIn second", placeholder = Model.LabelName })
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4">
+                    <div class="form-group">
+                        <label for="Password">@Model.LabelPassword</label>
+                        @Html.PasswordFor(t => t.User.Password, new { @class = "form-control fadeIn third", placeholder = Model.LabelPassword })
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-4">
+                    <div class="form-group">
+                        <label for="ConfirmPassword">@Model.LabelConfirmPassword</label>
+                        @Html.PasswordFor(t => t.ConfirmPassword, new { @class = "form-control fadeIn third", placeholder = Model.LabelConfirmPassword })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <input type="submit" value="@Model.LabelButtonSend" class="btn btn-primary" />
+                </div>
+            </div>
+            if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+            {
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
+                        <p style="color:red">@Html.Raw(Model.ErrorMessage) </p>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>

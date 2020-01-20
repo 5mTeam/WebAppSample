@@ -131,6 +131,7 @@
     <Compile Include="Models\Entities\Article.cs" />
     <Compile Include="Models\Entities\BaseEntity.cs" />
     <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\ProfileModel.cs" />
@@ -146,6 +147,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_ReservedLayoutPage.cshtml" />
     <Content Include="Views\Reserved\Profile.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

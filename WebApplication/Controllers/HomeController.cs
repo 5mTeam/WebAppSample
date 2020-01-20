@@ -69,5 +69,31 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            var model = new SignUpModel();
+            LoadLabelSignUpModel(model);
+            return View(model);
+        }
+
+        private static void LoadLabelSignUpModel(SignUpModel model)
+        {
+            model.LabelButtonSend = "Send";
+            model.LabelSignUp = "Sign Up";
+            model.LabelPassword = "Password";
+            model.LabelConfirmPassword = "Confirm Password";
+            model.LabelEmail = "Email";
+            model.LabelUsername = "Username";
+            model.LabelName = "Name";
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(SignUpModel model)
+        {
+            LoadLabelSignUpModel(model);
+            return View(model);
+        }
+
     }
 }
