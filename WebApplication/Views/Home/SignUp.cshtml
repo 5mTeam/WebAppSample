@@ -15,12 +15,14 @@
     <div id="formContent">
         @using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
         {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
             <div class="row">
                 <div class="col-md-offset-2 col-md-4">
                     <div class="form-group">
                         <label for="Username">@Model.LabelUsername</label>
                         @Html.TextBoxFor(t => t.User.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelUsername })
-                        @Html.ValidationMessageFor(t=>t.User.Username)
+                        @Html.ValidationMessageFor(t => t.User.Username)
                     </div>
                 </div>
                 <div class="col-md-offset-1 col-md-4">
@@ -54,6 +56,12 @@
                         <label for="ConfirmPassword">@Model.LabelConfirmPassword</label>
                         @Html.PasswordFor(t => t.ConfirmPassword, new { @class = "form-control fadeIn third", placeholder = Model.LabelConfirmPassword })
                         @Html.ValidationMessageFor(t => t.ConfirmPassword)
+
+                        @if (!string.IsNullOrWhiteSpace(Model.ErrorConfirmPasswordMessage))
+                        {
+                            <span class="field-validation-error" data-valmsg-for="ConfirmPassword" 
+                                  data-valmsg-replace="true">@Model.ErrorConfirmPasswordMessage</span>
+                        }
                     </div>
                 </div>
             </div>

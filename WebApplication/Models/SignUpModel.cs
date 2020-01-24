@@ -21,6 +21,8 @@ namespace WebApplication.Models
         [Required]
         public string ConfirmPassword { get; set; }
 
+
+        public string ErrorConfirmPasswordMessage { get; set; }
         public string ErrorMessage { get; set; }
     }
 }

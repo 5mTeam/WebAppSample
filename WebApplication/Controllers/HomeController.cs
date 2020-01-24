@@ -89,9 +89,26 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignUp(SignUpModel model)
         {
             LoadLabelSignUpModel(model);
+            var hasErrors = false;
+            if (model.User.Password != model.ConfirmPassword)
+            {
+                hasErrors = true;
+                model.ErrorConfirmPasswordMessage = "Confirm password MUST match Password";
+            }
+
+
+            if (hasErrors)
+                return View(model);
+
+            if (ModelState.IsValid )
+            {
+                //faccio l'insert sul db
+                //mando a pagina di benvenuto
+            }
             return View(model);
         }
 
