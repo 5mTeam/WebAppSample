@@ -20,12 +20,14 @@
                     <div class="form-group">
                         <label for="Username">@Model.LabelUsername</label>
                         @Html.TextBoxFor(t => t.User.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelUsername })
+                        @Html.ValidationMessageFor(t=>t.User.Username)
                     </div>
                 </div>
                 <div class="col-md-offset-1 col-md-4">
                     <div class="form-group">
-                        <label for="Username">@Model.LabelEmail</label>
-                        @Html.TextBoxFor(t => t.User.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelEmail })
+                        <label for="Email">@Model.LabelEmail</label>
+                        @Html.TextBoxFor(t => t.User.Email, new { @class = "form-control fadeIn second", placeholder = Model.LabelEmail })
+                        @Html.ValidationMessageFor(t => t.User.Email)
                     </div>
                 </div>
             </div>
@@ -34,6 +36,7 @@
                     <div class="form-group">
                         <label for="Name">@Model.LabelName</label>
                         @Html.TextBoxFor(t => t.User.Name, new { @class = "form-control fadeIn second", placeholder = Model.LabelName })
+                        @Html.ValidationMessageFor(t => t.User.Name)
                     </div>
                 </div>
 
@@ -43,12 +46,14 @@
                     <div class="form-group">
                         <label for="Password">@Model.LabelPassword</label>
                         @Html.PasswordFor(t => t.User.Password, new { @class = "form-control fadeIn third", placeholder = Model.LabelPassword })
+                        @Html.ValidationMessageFor(t => t.User.Password)
                     </div>
                 </div>
                 <div class="col-md-offset-1 col-md-4">
                     <div class="form-group">
                         <label for="ConfirmPassword">@Model.LabelConfirmPassword</label>
                         @Html.PasswordFor(t => t.ConfirmPassword, new { @class = "form-control fadeIn third", placeholder = Model.LabelConfirmPassword })
+                        @Html.ValidationMessageFor(t => t.ConfirmPassword)
                     </div>
                 </div>
             </div>
