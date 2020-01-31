@@ -28,5 +28,6 @@ namespace WebApplication.Models
         public string ErrorConfirmPasswordMessage { get; set; }
         public string ErrorMessage { get; set; }
         public string ErrorEmailExistsMessage { get; internal set; }
+        public string ErrorUsernameExistsMessage { get; internal set; }
     }
 }

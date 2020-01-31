@@ -115,6 +115,14 @@ namespace WebApplication.Controllers
                 model.ErrorEmailExistsMessage = "A registration with this email already exists";
             }
 
+            //controllo username non esistente - accesso al db
+            //ma prima verifico che il campo username sia validato correttamente
+            if (ModelState["user.Username"].Errors.Count() == 0 && DatabaseHelper.GetUserByUsername(model.User.Username) != null)
+            {
+                hasErrors = true;
+                model.ErrorUsernameExistsMessage = "A registration with this username already exists";
+            }
+
 
 
             if (hasErrors)
@@ -123,7 +131,11 @@ namespace WebApplication.Controllers
             if (ModelState.IsValid )
             {
                 //faccio l'insert sul db
+                model.User = DatabaseHelper.Save(model.User);
+
                 //mando a pagina di benvenuto
+
+
             }
             return View(model);
         }

@@ -81,6 +81,27 @@ namespace WebApplication.Helpers
             return user;
         }
 
+        public static User Save(User user)
+        {
+            try
+            {
+                user.RegistrationDate = DateTime.Now;
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    var sql = "INSERT INTO user (username,name,password,email,registrationdate) " +
+                        " VALUES (@username,@name,@password,@email,@registrationdate); " +
+                        " SELECT CAST(LAST_INSERT_ID() as int)";
+
+                    user.Id = connection.Query<int>(sql, user).FirstOrDefault();
+                }
+            }
+            catch(Exception ex)
+            {
+                //errore
+                return null;
+            }
+            return user;
+        }
 
 
 

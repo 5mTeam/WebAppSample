@@ -23,6 +23,11 @@
                         <label for="Username">@Model.LabelUsername</label>
                         @Html.TextBoxFor(t => t.User.Username, new { @class = "form-control fadeIn second", placeholder = Model.LabelUsername })
                         @Html.ValidationMessageFor(t => t.User.Username)
+                        @if (!string.IsNullOrWhiteSpace(Model.ErrorUsernameExistsMessage))
+                        {
+                            <span class="field-validation-error" data-valmsg-for="User.Username"
+                                  data-valmsg-replace="true">@Model.ErrorUsernameExistsMessage</span>
+                            }
                     </div>
                 </div>
                 <div class="col-md-offset-1 col-md-4">
