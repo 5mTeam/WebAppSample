@@ -15,13 +15,16 @@ namespace WebApplication.Models
         public string LabelPassword { get; set; }
         public string LabelConfirmPassword { get; set; }
         public string LabelEmail { get; set; }
+        public string LabelPrivacy { get; set; }
         public string LabelButtonSend { get; set; }
 
         public User User { get; set; }
         [Required]
         public string ConfirmPassword { get; set; }
 
+        public bool IsPrivacyChecked { get; set; }
 
+        public string ErrorPrivacyNotCheckedMessage { get; set; }
         public string ErrorConfirmPasswordMessage { get; set; }
         public string ErrorMessage { get; set; }
     }

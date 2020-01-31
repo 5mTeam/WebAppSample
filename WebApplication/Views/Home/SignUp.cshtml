@@ -59,12 +59,31 @@
 
                         @if (!string.IsNullOrWhiteSpace(Model.ErrorConfirmPasswordMessage))
                         {
-                            <span class="field-validation-error" data-valmsg-for="ConfirmPassword" 
+                            <span class="field-validation-error" data-valmsg-for="ConfirmPassword"
                                   data-valmsg-replace="true">@Model.ErrorConfirmPasswordMessage</span>
-                        }
+                            }
                     </div>
                 </div>
             </div>
+            <div class="row">
+
+                <div class="col-md-1">
+                    <div class="form-group">
+                        @Html.CheckBoxFor(t => t.IsPrivacyChecked, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-11">
+                    <div class="form-group">
+                        <label for="IsPrivacyChecked">@Model.LabelPrivacy</label>
+                        @if (!string.IsNullOrWhiteSpace(Model.ErrorPrivacyNotCheckedMessage))
+                        {
+                            <span class="field-validation-error" data-valmsg-for="IsPrivacyChecked"
+                                  data-valmsg-replace="true">@Model.ErrorPrivacyNotCheckedMessage</span>
+                            }
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-offset-4 col-md-4">
                     <input type="submit" value="@Model.LabelButtonSend" class="btn btn-primary" />

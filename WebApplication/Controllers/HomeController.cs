@@ -86,6 +86,7 @@ namespace WebApplication.Controllers
             model.LabelEmail = "Email";
             model.LabelUsername = "Username";
             model.LabelName = "Name";
+            model.LabelPrivacy = "Accept privacy terms";
         }
 
         [HttpPost]
@@ -98,6 +99,12 @@ namespace WebApplication.Controllers
             {
                 hasErrors = true;
                 model.ErrorConfirmPasswordMessage = "Confirm password MUST match Password";
+            }
+
+            if (!model.IsPrivacyChecked)
+            {
+                hasErrors = true;
+                model.ErrorPrivacyNotCheckedMessage="Privacy MUST be checked";
             }
 
 
