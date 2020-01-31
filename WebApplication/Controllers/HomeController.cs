@@ -32,7 +32,7 @@ namespace WebApplication.Controllers
                 model.Title = name;
             }
             model.AuthorLabel = "Autore";
-            model.Article = DatabaseHelper.GetArticleByid(id);
+            model.Article = DatabaseHelper.GetArticleById(id);
             return View(model);
         }
 
@@ -106,6 +106,15 @@ namespace WebApplication.Controllers
                 hasErrors = true;
                 model.ErrorPrivacyNotCheckedMessage="Privacy MUST be checked";
             }
+
+            //controllo email non esistente - accesso al db
+            //ma prima verifico che il campo email sia validato correttamente
+            if (ModelState["user.Email"].Errors.Count() == 0  &&  DatabaseHelper.GetUserByEmail(model.User.Email)!=null)
+            {
+                hasErrors = true;
+                model.ErrorEmailExistsMessage = "A registration with this email already exists";
+            }
+
 
 
             if (hasErrors)

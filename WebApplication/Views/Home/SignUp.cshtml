@@ -30,6 +30,11 @@
                         <label for="Email">@Model.LabelEmail</label>
                         @Html.TextBoxFor(t => t.User.Email, new { @class = "form-control fadeIn second", placeholder = Model.LabelEmail })
                         @Html.ValidationMessageFor(t => t.User.Email)
+                        @if (!string.IsNullOrWhiteSpace(Model.ErrorEmailExistsMessage))
+                        {
+                            <span class="field-validation-error" data-valmsg-for="User.Email"
+                                  data-valmsg-replace="true">@Model.ErrorEmailExistsMessage</span>
+                            }
                     </div>
                 </div>
             </div>

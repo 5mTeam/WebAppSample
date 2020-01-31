@@ -25,7 +25,7 @@ namespace WebApplication.Helpers
             return articles;
         }
 
-        public static Article GetArticleByid(int id)
+        public static Article GetArticleById(int id)
         {
             var article = new Article();
             using (var connection = new MySqlConnection(ConnectionString))
@@ -47,5 +47,42 @@ namespace WebApplication.Helpers
 
             return user;
         }
+
+        public static User GetUserById(int id)
+        {
+                        var user = new User();
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = "select * from user where id = @id";
+                user = connection.Query<User>(sql, new { id }).FirstOrDefault();
+            }
+            return user;
+        }
+
+        public static User GetUserByEmail(string email)
+        {
+            var user = new User();
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = "select * from user where email = @email";
+                user = connection.Query<User>(sql, new { email }).FirstOrDefault();
+            }
+            return user;
+        }
+
+        public static User GetUserByUsername(string username)
+        {
+            var user = new User();
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = "select * from user where username = @username";
+                user = connection.Query<User>(sql, new { username }).FirstOrDefault();
+            }
+            return user;
+        }
+
+
+
+
     }
 }

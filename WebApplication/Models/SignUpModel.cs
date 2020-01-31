@@ -27,5 +27,6 @@ namespace WebApplication.Models
         public string ErrorPrivacyNotCheckedMessage { get; set; }
         public string ErrorConfirmPasswordMessage { get; set; }
         public string ErrorMessage { get; set; }
+        public string ErrorEmailExistsMessage { get; internal set; }
     }
 }
