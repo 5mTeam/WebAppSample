@@ -1,0 +1,13 @@
+﻿@model WebApplication.Models.ThankYouModel
+
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            @Html.Raw(Model.WelcomeMessage)
+        </p>
+    </div>
+</div>

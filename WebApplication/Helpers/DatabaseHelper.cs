@@ -14,6 +14,8 @@ namespace WebApplication.Helpers
         private static string ConnectionString =
             ConfigurationManager.ConnectionStrings["Database"].ConnectionString; //personalizzare la set per gestire l'eccezione
 
+        private const string _andIsConfirmed = " and isconfirmed=1";
+
         public static List<Article> GetAllArticles()
         {
             var articles = new List<Article>();
@@ -41,7 +43,7 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where username = @username and password = @password";
+                var sql = "select * from user where username = @username and password = @password "+ _andIsConfirmed;
                 user = connection.Query<User>(sql, new { username, password }).FirstOrDefault();
             }
 
@@ -50,10 +52,10 @@ namespace WebApplication.Helpers
 
         public static User GetUserById(int id)
         {
-                        var user = new User();
+            var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where id = @id";
+                var sql = "select * from user where id = @id"+ _andIsConfirmed;
                 user = connection.Query<User>(sql, new { id }).FirstOrDefault();
             }
             return user;
@@ -64,7 +66,7 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where email = @email";
+                var sql = "select * from user where email = @email"+ _andIsConfirmed;
                 user = connection.Query<User>(sql, new { email }).FirstOrDefault();
             }
             return user;
@@ -75,7 +77,7 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where username = @username";
+                var sql = "select * from user where username = @username"+ _andIsConfirmed;
                 user = connection.Query<User>(sql, new { username }).FirstOrDefault();
             }
             return user;
@@ -95,7 +97,7 @@ namespace WebApplication.Helpers
                     user.Id = connection.Query<int>(sql, user).FirstOrDefault();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //errore
                 return null;

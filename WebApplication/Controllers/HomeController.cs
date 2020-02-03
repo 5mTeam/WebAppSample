@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication.Helpers;
 using WebApplication.Models;
+using WebApplication.Models.Entities;
 
 namespace WebApplication.Controllers
 {
@@ -27,7 +28,7 @@ namespace WebApplication.Controllers
         public ActionResult Article(int id, string name)
         {
             var model = new ArticleModel();
-            if(!string.IsNullOrWhiteSpace(name))
+            if (!string.IsNullOrWhiteSpace(name))
             {
                 model.Title = name;
             }
@@ -57,7 +58,7 @@ namespace WebApplication.Controllers
         {
             LoadLabelLoginModel(model);
             var user = DatabaseHelper.Login(model.Username, model.Password);
-            if (user!=null)
+            if (user != null)
             {
                 //carichiamo l'utente loggato in sessione
                 Session["loggedUser"] = user;
@@ -104,12 +105,12 @@ namespace WebApplication.Controllers
             if (!model.IsPrivacyChecked)
             {
                 hasErrors = true;
-                model.ErrorPrivacyNotCheckedMessage="Privacy MUST be checked";
+                model.ErrorPrivacyNotCheckedMessage = "Privacy MUST be checked";
             }
 
             //controllo email non esistente - accesso al db
             //ma prima verifico che il campo email sia validato correttamente
-            if (ModelState["user.Email"].Errors.Count() == 0  &&  DatabaseHelper.GetUserByEmail(model.User.Email)!=null)
+            if (ModelState["user.Email"].Errors.Count() == 0 && DatabaseHelper.GetUserByEmail(model.User.Email) != null)
             {
                 hasErrors = true;
                 model.ErrorEmailExistsMessage = "A registration with this email already exists";
@@ -128,15 +129,38 @@ namespace WebApplication.Controllers
             if (hasErrors)
                 return View(model);
 
-            if (ModelState.IsValid )
+            if (ModelState.IsValid)
             {
                 //faccio l'insert sul db
                 model.User = DatabaseHelper.Save(model.User);
-
-                //mando a pagina di benvenuto
+                if (model.User != null)
+                {
+                    //mando a pagina di benvenuto
+                    Session["signUpUser"] = model.User;
+                    return RedirectToAction("ThankYou", "Home");
+                }
+                model.ErrorMessage = "Server error. Try later";
 
 
             }
+            return View(model);
+        }
+
+
+        [HttpGet]
+        public ActionResult ThankYou()
+        {
+            var model = new ThankYouModel();
+            var signUpUser = (User)Session["signUpUser"];
+            if (signUpUser==null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Session["signUpUser"] = null;
+
+            //invio mail di conferma
+            model.WelcomeMessage = "Thank you <strong>"+signUpUser.Name +"</strong> for your registration";
+
             return View(model);
         }
 

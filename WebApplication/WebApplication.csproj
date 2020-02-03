@@ -127,6 +127,7 @@
     </Compile>
     <Compile Include="Helpers\CustomRandomHelper.cs" />
     <Compile Include="Helpers\DatabaseHelper.cs" />
+    <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Entities\Article.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\ReservedModel.cs" />
+    <Compile Include="Models\ThankYouModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +151,7 @@
     <Content Include="Views\Shared\_ReservedLayoutPage.cshtml" />
     <Content Include="Views\Reserved\Profile.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\ThankYou.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

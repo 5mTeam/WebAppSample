@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 31, 2020 alle 12:06
+-- Creato il: Feb 03, 2020 alle 09:50
 -- Versione del server: 10.1.36-MariaDB
 -- Versione PHP: 7.2.10
 
@@ -61,6 +61,7 @@ CREATE TABLE `user` (
   `Name` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `RegistrationDate` datetime NOT NULL,
+  `IsConfirmed` bit(1) NOT NULL,
   `InsertDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `LastModifiedDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -69,9 +70,10 @@ CREATE TABLE `user` (
 -- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `user` (`Id`, `Username`, `Password`, `Name`, `Email`, `RegistrationDate`, `InsertDate`, `LastModifiedDate`) VALUES
-(1, 'admin', 'admin', 'Administrator', 'admin@iispascal.it', '2020-01-20 09:41:46', '2020-01-20 09:41:46', NULL),
-(2, 'user', 'user', 'Normal user', 'user@iispascal.it', '2020-01-20 09:41:46', '2020-01-20 09:41:46', NULL);
+INSERT INTO `user` (`Id`, `Username`, `Password`, `Name`, `Email`, `RegistrationDate`, `IsConfirmed`, `InsertDate`, `LastModifiedDate`) VALUES
+(1, 'admin', 'admin', 'Administrator', 'admin@iispascal.it', '2020-01-20 09:41:46', b'0', '2020-01-20 09:41:46', NULL),
+(2, 'user', 'user', 'Normal user', 'user@iispascal.it', '2020-01-20 09:41:46', b'0', '2020-01-20 09:41:46', NULL),
+(3, 'dsfds', '1', 'sad', 'adminds@iispascal.it', '0001-01-01 00:00:00', b'0', '2020-01-31 12:40:39', NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -103,7 +105,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
