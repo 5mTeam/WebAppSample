@@ -22,7 +22,20 @@ namespace WebApplication.Helpers
                 MailMessage msg = new MailMessage(_username, user.Email);
                 msg.Subject = "WebApplication 5M - Confirm registration";
                 msg.IsBodyHtml = true;
-                msg.Body = "";
+                var token = user.Id + "-" + user.RegistrationDate.ToString("yyMMddhhmmss");
+               
+                var link = baseUrl+"Reserved/ConfirmEmail/?token=" + token;
+                msg.Body = "<a href=\""+link+"\">Confirm registration</a>";
+
+
+                SmtpClient client = new SmtpClient(_smtp, Convert.ToInt32(_port));
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = true;
+                client.Credentials = new System.Net.NetworkCredential(_username, _password);
+                client.EnableSsl = true;
+
+                client.Send(msg);
+
             }
             catch(Exception ex)
             {

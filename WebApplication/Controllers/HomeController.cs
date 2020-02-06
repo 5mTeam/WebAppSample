@@ -14,6 +14,7 @@ namespace WebApplication.Controllers
         // GET: Home
         public ActionResult Index()
         {
+
             var model = new IndexModel
             {
                 Title = "Salvo",
@@ -159,6 +160,8 @@ namespace WebApplication.Controllers
             Session["signUpUser"] = null;
 
             //invio mail di conferma
+            string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+            var resultEmail = EmailHelper.SendConfirmationEmail(signUpUser);
             model.WelcomeMessage = "Thank you <strong>"+signUpUser.Name +"</strong> for your registration";
 
             return View(model);
