@@ -15,7 +15,7 @@ namespace WebApplication.Helpers
         private static string _username = ConfigurationManager.AppSettings["UsernameEmail"];
         private static string _password = ConfigurationManager.AppSettings["PasswordEmail"];
 
-        public static bool SendConfirmationEmail(User user)
+        public static bool SendConfirmationEmail(string baseUrl, User user)
         {
             try
             {
@@ -23,7 +23,6 @@ namespace WebApplication.Helpers
                 msg.Subject = "WebApplication 5M - Confirm registration";
                 msg.IsBodyHtml = true;
                 var token = user.Id + "-" + user.RegistrationDate.ToString("yyMMddhhmmss");
-               
                 var link = baseUrl+"Reserved/ConfirmEmail/?token=" + token;
                 msg.Body = "<a href=\""+link+"\">Confirm registration</a>";
 

@@ -43,7 +43,7 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where username = @username and password = @password "+ _andIsConfirmed;
+                var sql = "select * from user where username = @username and password = @password " + _andIsConfirmed;
                 user = connection.Query<User>(sql, new { username, password }).FirstOrDefault();
             }
 
@@ -55,7 +55,18 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where id = @id"+ _andIsConfirmed;
+                var sql = "select * from user where id = @id " + _andIsConfirmed;
+                user = connection.Query<User>(sql, new { id }).FirstOrDefault();
+            }
+            return user;
+        }
+
+        public static User GetUserByIdNotConfirmed(int id)
+        {
+            var user = new User();
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = "select * from user where id = @id and isConfirmed=0";
                 user = connection.Query<User>(sql, new { id }).FirstOrDefault();
             }
             return user;
@@ -66,7 +77,7 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where email = @email"+ _andIsConfirmed;
+                var sql = "select * from user where email = @email " + _andIsConfirmed;
                 user = connection.Query<User>(sql, new { email }).FirstOrDefault();
             }
             return user;
@@ -77,13 +88,46 @@ namespace WebApplication.Helpers
             var user = new User();
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = "select * from user where username = @username"+ _andIsConfirmed;
+                var sql = "select * from user where username = @username " + _andIsConfirmed;
                 user = connection.Query<User>(sql, new { username }).FirstOrDefault();
             }
             return user;
         }
 
         public static User Save(User user)
+        {
+            if (user.Id == 0)
+                return Insert(user);
+            return Update(user);
+        }
+
+        private static User Update(User user)
+        {
+            try
+            {
+                user.LastModifiedDate = DateTime.Now;
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    var sql = "UPDATE user SET Username=@Username, Password=@Password," +
+                                "Name=@Name, Email=@Email, IsConfirmed=@IsConfirmed," +
+                                "LastModifiedDate=@LastModifiedDate " +
+                                "WHERE Id=@Id; ";
+
+                    int updatedRows = connection.Execute(sql, user);
+                    if (updatedRows != 1) //deve essere aggiornata una sola riga, altrimenti errore
+                        return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                //errore
+                return null;
+            }
+            return user;
+
+        }
+
+        private static User Insert(User user)
         {
             try
             {
@@ -104,8 +148,5 @@ namespace WebApplication.Helpers
             }
             return user;
         }
-
-
-
     }
 }

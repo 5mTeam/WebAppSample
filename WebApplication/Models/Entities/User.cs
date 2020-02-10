@@ -21,6 +21,7 @@ namespace WebApplication.Models.Entities
         public string Email { get; set; }
         [Required]
         public DateTime RegistrationDate { get; set; }
+        public bool IsConfirmed { get; set; }
 
     }
 }

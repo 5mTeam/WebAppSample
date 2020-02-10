@@ -153,7 +153,7 @@ namespace WebApplication.Controllers
         {
             var model = new ThankYouModel();
             var signUpUser = (User)Session["signUpUser"];
-            if (signUpUser==null)
+            if (signUpUser == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -161,8 +161,8 @@ namespace WebApplication.Controllers
 
             //invio mail di conferma
             string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
-            var resultEmail = EmailHelper.SendConfirmationEmail(signUpUser);
-            model.WelcomeMessage = "Thank you <strong>"+signUpUser.Name +"</strong> for your registration";
+            var resultEmail = EmailHelper.SendConfirmationEmail(baseUrl, signUpUser);
+            model.WelcomeMessage = "Thank you <strong>" + signUpUser.Name + "</strong> for your registration";
 
             return View(model);
         }
